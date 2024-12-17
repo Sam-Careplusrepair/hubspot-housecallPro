@@ -1,0 +1,143 @@
+{
+  "info": {
+    "name": "HubSpot and Housecall Middleware",
+    "description": "API collection to fetch, create, and sync customers between HubSpot and Housecall Pro.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Fetch HubSpot Customers",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer <HUBSPOT_API_KEY>",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/api/hubspot/customers",
+          "host": ["{{base_url}}"],
+          "path": ["api", "hubspot", "customers"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Fetch Housecall Pro Customers",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer <HOUSECALL_PRO_API_KEY>",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/api/housecall/customers",
+          "host": ["{{base_url}}"],
+          "path": ["api", "housecall", "customers"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create HubSpot Customer",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer <HUBSPOT_API_KEY>",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n   \"properties\": {\n       \"email\": \"jane.doe@example.com\",\n       \"firstname\": \"Jane\",\n       \"lastname\": \"Doe\"\n   }\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/hubspot/customers",
+          "host": ["{{base_url}}"],
+          "path": ["api", "hubspot", "customers"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create Housecall Pro Customer",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer <HOUSECALL_PRO_API_KEY>",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n   \"customer_name\": \"Jane Doe\",\n   \"phone\": \"987-654-3210\",\n   \"address\": \"456 Example St\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/housecall/customers",
+          "host": ["{{base_url}}"],
+          "path": ["api", "housecall", "customers"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Middleware Sync Data",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n   \"hubspot_data\": {\n       \"email\": \"michael.smith@example.com\",\n       \"firstname\": \"Michael\",\n       \"lastname\": \"Smith\"\n   },\n   \"housecall_pro_data\": {\n       \"customer_name\": \"Michael Smith\",\n       \"phone\": \"555-123-4567\",\n       \"address\": \"789 Sync St\"\n   }\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/sync-data",
+          "host": ["{{base_url}}"],
+          "path": ["api", "sync-data"]
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://127.0.0.1:8000",
+      "type": "string"
+    }
+  ]
+}
