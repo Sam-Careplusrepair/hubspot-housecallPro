@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\HubspotHousecallMiddleware2;
+use App\Http\Controllers\HubSpotController;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
@@ -23,10 +24,12 @@ Route::post('/sync-data', function (Request $request) {
     return $middleware->handle($request, function () {});
 });
 
-Route::get('/hubspot/customers', function () {
-    $middleware = new HubspotHousecallMiddleware2();
-    return response()->json($middleware->fetchHubSpotRecords());
-});
+Route::get('/hubspot/contacts', [HubSpotcontroller::class, 'getHubSpotCustomers']);
+
+// Route::get('/hubspot/customers', function () {
+//     $middleware = new HubspotHousecallMiddleware2();
+//     return response()->json($middleware->fetchHubSpotRecords());
+// });
 
 Route::get('/housecall/customers', function () {
     $middleware = new HubspotHousecallMiddleware2();
