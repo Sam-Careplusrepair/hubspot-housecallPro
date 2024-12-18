@@ -6,7 +6,7 @@
   },
   "item": [
     {
-      "name": "Fetch HubSpot Customers",
+      "name": "Fetch HubSpot Contacts",
       "request": {
         "method": "GET",
         "header": [
@@ -22,9 +22,9 @@
           }
         ],
         "url": {
-          "raw": "{{base_url}}/api/hubspot/customers",
+          "raw": "{{base_url}}/api/hubspot/contacts",
           "host": ["{{base_url}}"],
-          "path": ["api", "hubspot", "customers"]
+          "path": ["api", "hubspot", "contacts"]
         }
       },
       "response": []
