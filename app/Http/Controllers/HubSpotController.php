@@ -8,10 +8,10 @@ use App\Http\Middleware\HubspotHousecallMiddleware2;
 class HubSpotController extends Controller
 {
     
-    public function getHubSpotCustomers()
+    public function getHubSpotContacts()
     {
         $middleware = new HubSpotHousecallMiddleware2();
-        $records = $middleware->getHubSpotCustomers();
+        $records = $middleware->getHubSpotContacts();
 
         return response()->json($records);
     }

@@ -24,7 +24,7 @@ Route::post('/sync-data', function (Request $request) {
     return $middleware->handle($request, function () {});
 });
 
-Route::get('/hubspot/contacts', [HubSpotcontroller::class, 'getHubSpotCustomers']);
+Route::get('/hubspot/contacts', [HubSpotcontroller::class, 'getHubSpotContacts']);
 
 // Route::get('/hubspot/customers', function () {
 //     $middleware = new HubspotHousecallMiddleware2();

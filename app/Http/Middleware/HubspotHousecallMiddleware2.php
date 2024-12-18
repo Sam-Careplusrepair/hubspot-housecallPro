@@ -92,7 +92,7 @@ class HubspotHousecallMiddleware2
      * @return array
      */
     // protected function fetchHubSpotRecords()
-    public function getHubSpotCustomers()
+    public function getHubSpotContacts()
     {
         $hubspotApiUrl = env('HUBSPOT_API_URL');
         $hubspotApiKey = env('HUBSPOT_API_KEY');
