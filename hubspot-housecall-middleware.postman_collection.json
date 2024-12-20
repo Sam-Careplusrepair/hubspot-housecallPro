@@ -54,7 +54,7 @@
       "response": []
     },
     {
-      "name": "Create HubSpot Customer",
+      "name": "Create HubSpot Contacts",
       "request": {
         "method": "POST",
         "header": [
@@ -74,9 +74,9 @@
           "raw": "{\n   \"properties\": {\n       \"email\": \"jane.doe@example.com\",\n       \"firstname\": \"Jane\",\n       \"lastname\": \"Doe\"\n   }\n}"
         },
         "url": {
-          "raw": "{{base_url}}/api/hubspot/customers",
+          "raw": "{{base_url}}/api/hubspot/contacts",
           "host": ["{{base_url}}"],
-          "path": ["api", "hubspot", "customers"]
+          "path": ["api", "hubspot", "contacts"]
         }
       },
       "response": []

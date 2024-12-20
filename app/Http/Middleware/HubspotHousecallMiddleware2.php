@@ -123,6 +123,42 @@ class HubspotHousecallMiddleware2
         return ['error' => 'Failed to fetch HubSpot records'];
     }
 
+    public function createHubSpotCustmer(array $data)
+    {
+        $hubspotApiUrl = env('HUBSPOT_API_URL');
+        $hubspotApiKey = env('HUBSPOT_API_KEY');
+
+        // Map the data to HubSpot property names
+        $properties = [
+            'firstname' => $data['firstname'],
+            'lastname' => $data['lastname'],
+            'email' => $data['email'],
+            'phone' => $data['phone'],
+            'company' => $data['company'],
+        ];
+
+        $response= Http::withHeaders([
+            'Authorization' => 'Bearer ' . $hubspotApiKey,
+            'Content-Type' => 'application/json',
+        ])->post($hubspotApiUrl . '/crm/v3/objects/contacts', [
+            'properties' => [
+                'firstname' => $data['firstname'],
+                'lastname' => $data['lastname'],
+                'email' => $data['email'],
+                'phone' => $data['phone'] ?? '',
+                'company' => $data['company'] ?? ''
+            ]
+        ]);
+
+        \Log::info('HubSpot API Request:', ['payload' => $data]);
+\Log::info('HubSpot API Response:', ['status' => $response->status(), 'body' => $response->json()]);
+
+return $response;
+        
+    }
+
+    
+
     /**
      * Fetch all existing records from Housecall Pro API.
      *
