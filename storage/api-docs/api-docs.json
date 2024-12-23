@@ -1,0 +1,141 @@
+openapi: 3.0.0
+info:
+  title: HubSpot and Housecall Middleware
+  description: >-
+    API collection to fetch, create, and sync customers between HubSpot and
+    Housecall Pro.
+  version: 1.0.0
+servers:
+  - url: http://{{base_url}}
+paths:
+  /api/hubspot/contacts:
+    get:
+      tags:
+        - default
+      summary: Fetch HubSpot Contacts
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: Bearer <HUBSPOT_API_KEY>
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - default
+      summary: Create HubSpot Contacts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                properties:
+                  email: jane.doe@example.com
+                  firstname: Jane
+                  lastname: Doe
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: Bearer <HUBSPOT_API_KEY>
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/housecall/customers:
+    get:
+      tags:
+        - default
+      summary: Fetch Housecall Pro Customers
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: Bearer <HOUSECALL_PRO_API_KEY>
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - default
+      summary: Create Housecall Pro Customer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                customer_name: Jane Doe
+                phone: 987-654-3210
+                address: 456 Example St
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: Bearer <HOUSECALL_PRO_API_KEY>
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/sync-data:
+    post:
+      tags:
+        - default
+      summary: Middleware Sync Data
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                hubspot_data:
+                  email: michael.smith@example.com
+                  firstname: Michael
+                  lastname: Smith
+                housecall_pro_data:
+                  customer_name: Michael Smith
+                  phone: 555-123-4567
+                  address: 789 Sync St
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
