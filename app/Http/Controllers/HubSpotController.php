@@ -7,6 +7,8 @@ use App\Http\Middleware\HubspotHousecallMiddleware2;
 
 class HubSpotController extends Controller
 {
+
+
     
     public function getHubSpotContacts()
     {

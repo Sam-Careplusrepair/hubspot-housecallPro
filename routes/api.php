@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\HubspotHousecallMiddleware2;
 use App\Http\Controllers\HubSpotController;
+use App\Http\Controllers\HouseCallProController;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
@@ -27,6 +28,9 @@ Route::post('/sync-data', function (Request $request) {
 Route::get('/hubspot/contacts', [HubSpotcontroller::class, 'getHubSpotContacts']);
 
 Route::post('/hubspot/contacts', [HubSpotController::class, 'createHubSpotContacts']);
+
+Route::get('/housecallpro/customers', [HouseCallProController::class, 'getHousecallProCustomers']);
+
 
 // Route::get('/hubspot/customers', function () {
 //     $middleware = new HubspotHousecallMiddleware2();
