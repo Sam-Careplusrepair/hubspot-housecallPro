@@ -65,7 +65,7 @@ You can easily access the API documentation in your browser by navigating to the
 
 Once there, you will see an interface like this:
 
-![API Documentation Screenshot](/images/Screenshot_2024-12-23_175204.png)
+![API Documentation Screenshot](/assets/images/Screenshot_2024-12-23_175204.png)
 
 ---
 
