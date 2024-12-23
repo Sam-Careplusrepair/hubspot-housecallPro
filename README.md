@@ -57,6 +57,18 @@ This project integrates HubSpot and Housecall Pro APIs to synchronize customer d
 
 ---
 
+## Viewing API Documentation
+
+You can easily access the API documentation in your browser by navigating to the following URL:
+
+[http://127.0.0.1:8000/api/documentation#/](http://127.0.0.1:8000/api/documentation#/)
+
+Once there, you will see an interface like this:
+
+![API Documentation Screenshot](Screenshot 2024-12-23 175204.png)
+
+---
+
 ## Endpoints Documentation
 
 Below are the available API endpoints for this integration:
