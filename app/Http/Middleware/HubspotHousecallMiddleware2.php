@@ -182,70 +182,6 @@ class HubspotHousecallMiddleware2
     }
 
 
-//     public function createHubSpotCustomer(array $data)
-// {
-//     $hubspotApiUrl = env('HUBSPOT_API_URL');
-//     $hubspotApiKey = env('HUBSPOT_API_KEY');
-
-//     // Map the data to HubSpot property names
-//     $properties = [
-//         'firstname' => $data['firstname'],
-//         'lastname' => $data['lastname'],
-//         'email' => $data['email'],
-//         'phone' => $data['phone'],
-//         'company' => $data['company'],
-//     ];
-
-//     try {
-//         // Make the API request
-//         $response = Http::withHeaders([
-//             'Authorization' => 'Bearer ' . $hubspotApiKey,
-//             'Content-Type' => 'application/json',
-//         ])->post($hubspotApiUrl . '/objects/contacts', [
-//             'properties' => $properties,
-//         ]);
-
-//         // Log the response for debugging
-//         Log::info('HubSpot API Response:', [
-//             'status' => $response->status(),
-//             'body' => $response->body(),
-//         ]);
-
-//         // Handle unsuccessful responses
-//         if (!$response->successful()) {
-//             Log::error('HubSpot API Request Failed:', [
-//                 'status' => $response->status(),
-//                 'error' => $response->json(),
-//             ]);
-
-//             return [
-//                 'success' => false,
-//                 'message' => 'Failed to create contact in HubSpot.',
-//                 'error' => $response->json(),
-//             ];
-//         }
-
-//         // Return success response
-//         return [
-//             'success' => true,
-//             'message' => 'Contact created successfully in HubSpot.',
-//             'data' => $response->json(),
-//         ];
-//     } catch (\Exception $e) {
-//         // Catch and log exceptions
-//         Log::error('HubSpot API Exception:', [
-//             'message' => $e->getMessage(),
-//             'trace' => $e->getTraceAsString(),
-//         ]);
-
-//         return [
-//             'success' => false,
-//             'message' => 'An error occurred while creating the contact in HubSpot.',
-//             'error' => $e->getMessage(),
-//         ];
-//     }
-// }
-
 
     
 
@@ -254,12 +190,19 @@ class HubspotHousecallMiddleware2
      *
      * @return array
      */
-    protected function fetchHousecallRecords()
+    public function fetchHousecallRecords()
     {
         $housecallProApiUrl = env('HOUSECALL_PRO_API_URL');
         $housecallProApiKey = env('HOUSECALL_PRO_API_KEY');
 
-        $response = Http::withHeaders([
+        // with SSL
+        // $response= Http::withHeaders([
+        //     'Authorization' => 'Bearer ' . $housecallProApiKey,
+        //     'Content-Type' => 'application/json',
+        // ])->get($housecallProApiUrl . '/customers');
+
+        // wihout SSL
+        $response = Http::withoutVerifying()->withHeaders([
             'Authorization' => 'Bearer ' . $housecallProApiKey,
             'Content-Type' => 'application/json',
         ])->get($housecallProApiUrl . '/customers');

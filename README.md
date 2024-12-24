@@ -73,10 +73,10 @@ Once there, you will see an interface like this:
 
 Below are the available API endpoints for this integration:
 
-### 1. Fetch HubSpot Customers
+### 1. Fetch HubSpot Contacts
 
 - **Method**: `GET`  
-- **URL**: `/api/hubspot/customers`  
+- **URL**: `/api/hubspot/contacts`  
 - **Headers**:
   - `Authorization: Bearer <HUBSPOT_API_KEY>`
   - `Content-Type: application/json`  
@@ -109,10 +109,10 @@ Below are the available API endpoints for this integration:
 
 ---
 
-### 3. Create HubSpot Customer
+### 3. Create HubSpot Contacts
 
 - **Method**: `POST`  
-- **URL**: `/api/hubspot/customers`  
+- **URL**: `/api/hubspot/contacts`  
 - **Headers**:
   - `Authorization: Bearer <HUBSPOT_API_KEY>`
   - `Content-Type: application/json`  
@@ -185,20 +185,6 @@ Below are the available API endpoints for this integration:
   }
   ```
 
----
-
-## Usage
-
-1. Add the middleware to your routes or controllers in `routes/api.php`:
-   ```php
-   use App\Http\Middleware\HubSpotHousecallMiddleware;
-
-   Route::middleware([HubSpotHousecallMiddleware::class])->group(function () {
-       Route::post('/sync-data', [YourController::class, 'handleSync']);
-   });
-   ```
-
-2. Test the endpoints using **Postman** or any HTTP client.
 
 ---
 
